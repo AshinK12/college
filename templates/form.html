@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="date"],
+        .form-container input[type="number"],
+        .form-container input[type="tel"],
+        .form-container input[type="email"],
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .form-container button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .form-container button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Form</h2>
+            <form id="myForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dob">DOB:</label>
+                    <input type="date" id="dob" name="dob" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" class="form-control">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <select id="department" name="department" class="form-control">
+                        <option value="computer_science">Computer Science</option>
+                        <option value="commerce">Commerce</option>
+                        <option value="humanities">Humanities</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="course">Courses:</label>
+                    <select id="course" name="course" class="form-control">
+                          <option value="BCA">Bachelor of Computer Science</option>
+                        <option value="BCOM">Bachelor of Commerce</option>
+                        <option value="BBA">Bachelor of Buisness</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="purpose">Purpose:</label>
+                    <select id="purpose" name="purpose" class="form-control">
+                        <option value="enquiry">For Enquiry</option>
+                        <option value="place_order">Place Order</option>
+                        <option value="return">Return</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Materials provide:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notebook" name="materials[]" value="notebook">
+                        <label class="form-check-label" for="notebook">Notebook</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="pen" name="materials[]" value="pen">
+                        <label class="form-check-label" for="pen">Pen</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="exam_paper" name="materials[]" value="exam_paper">
+                        <label class="form-check-label" for="exam_paper">Exam Paper</label>
+                    </div>
+                    <!-- Add more checkboxes as needed -->
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div id="confirmation" style="display: none;">
+                <p><strong>Order Confirmed!</strong></p>
+                <p>Thank you for submitting the form.</p>
+                <p><a href="index.html">Return to Home Page</a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Handle form submission, show confirmation message, etc.
+            document.getElementById('myForm').style.display = 'none';
+            document.getElementById('confirmation').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
