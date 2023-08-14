@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
-    <title>School Store</title>
-    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <title>Xyz College</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Custom CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -31,20 +29,42 @@
             text-decoration: none;
             color: #ffffff;
         }
-        h1 {
-            margin-top: 40px;
-            color: #343a40;
+        .hero-section {
+            background-image: url("{% static 'style/image/hero.jpg' %}");
+            background-size: cover;
+            background-position: center;
+           color: #000000;
+            padding: 100px 0;
+            text-align: center;
         }
-        h6 {
-            color: #6c757d;
+        .welcome-message {
+            margin-top: 30px;
+
         }
-        .btn-custom {
-            background-color: #007bff;
+        .departments-dropdown {
+            background-color: #343a40;
             color: #ffffff;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            text-decoration: none;
+        }
+        .departments-dropdown a {
+            color: #ffffff;
+        }
+        .about-college {
+            padding: 50px 0;
+            text-align: center;
+        }
+        .about-college p {
+            margin-bottom: 30px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .h1{
+          background-color:orange;
+           color: #ffffff;
+
         }
     </style>
 </head>
@@ -55,23 +75,43 @@
                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-               <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department</a>
-    <div class="dropdown-menu" aria-labelledby="departmentDropdown">
-        <a class="dropdown-item" href="{% url 'department_wikipedia' 'computer_science' %}">Computer Science</a>
-        <a class="dropdown-item" href="{% url 'department_wikipedia' 'commerce' %}">Commerce</a>
-        <a class="dropdown-item" href="{% url 'department_wikipedia' 'Humanities' %}">Humanities</a>
-        <a class="dropdown-item" href="{% url 'department_wikipedia' 'Biologyscience' %}">Biologyscience</a>
-    </div>
-</li>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department</a>
+                    <div class="dropdown-menu departments-dropdown" aria-labelledby="departmentDropdown">
+                        <a class="dropdown-item" href="{% url 'department_wikipedia' 'computer_science' %}">Computer Science</a>
+                        <a class="dropdown-item" href="{% url 'department_wikipedia' 'commerce' %}">Commerce</a>
+                        <a class="dropdown-item" href="{% url 'department_wikipedia' 'Humanities' %}">Humanities</a>
+                        <a class="dropdown-item" href="{% url 'department_wikipedia' 'Biologyscience' %}">Biologyscience</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
-    <div class="container text-center">
-        <h2>welcome to home</h2>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="hero-section">
 
+        <h1>Welcome to Xyz College</h1><br>
+        <img src="{% static 'style/image/ab.jpg' %}" alt="College Campus">
+        {% if user.is_authenticated %}
+            <h2>Hello {{ user.username }}</h2>
+        {% else %}
+            <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to access this page.</p>
+        {% endif %}
+    </div>
+    <div class="container about-college">
+        <h2>About Xyz College</h2>
+        <p>
+            <b>Equipment for your success</b><br>
+            College of Commerce, Arts and Science, Patna (est. 1949) is a constituent unit of Patliputra University, Patna.
+            Established in 1949, it is one of the oldest colleges in Patna, known for imparting quality undergraduate and postgraduate education.
+        </p>
+        <img src="{% static 'style/image/ab.jpg' %}" alt="College Campus">
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 Xyz College. All rights reserved.</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
