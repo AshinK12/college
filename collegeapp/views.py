@@ -63,5 +63,5 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 def form_view(request):
-    # Implement your form view logic
+
     return render(request, 'form.html')

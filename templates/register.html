@@ -54,19 +54,33 @@
       text-align: center;
       margin-top: 10px;
     }
+    .messages {
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
   <div class="container-register">
     <div class="register-form">
       <h2>Create an Account</h2>
+      <!-- Display error messages -->
+      {% if messages %}
+      <div class="messages">
+        <ul class="list-unstyled alert alert-danger">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <!-- Registration form -->
       <form action="{% url 'register' %}" method="POST">
         {% csrf_token %}
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <input type="text" class="form-control" required name="username" id="username">
         </div>
-        <div class="mb-3">
+         <div class="mb-3">
           <label for="first_name" class="form-label">First Name</label>
           <input type="text" class="form-control" required name="first_name" id="first_name">
         </div>
@@ -92,6 +106,8 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block">Register</button>
       </form>
+
+
       <div class="login-link">
         <p>Already have an account? <a href="/">Login here</a></p>
       </div>

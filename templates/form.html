@@ -71,15 +71,16 @@
                 <div class="form-group">
                     <label for="age">Age:</label>
                     <input type="number" id="age" name="age" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="gender">Gender:</label>
-                    <select id="gender" name="gender" class="form-control">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
+                </div><div class="form-group">
+    <label>Gender:</label><br>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+    <input type="radio" id="other" name="gender" value="other">
+    <label for="other">Other</label><br>
+</div>
+
                 <div class="form-group">
                     <label for="phone">Phone Number:</label>
                     <input type="tel" id="phone" name="phone" class="form-control">
@@ -92,22 +93,60 @@
                     <label for="address">Address:</label>
                     <textarea id="address" name="address" class="form-control"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="department">Department:</label>
-                    <select id="department" name="department" class="form-control">
-                        <option value="computer_science">Computer Science</option>
-                        <option value="commerce">Commerce</option>
-                        <option value="humanities">Humanities</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="course">Courses:</label>
-                    <select id="course" name="course" class="form-control">
-                          <option value="BCA">Bachelor of Computer Science</option>
-                        <option value="BCOM">Bachelor of Commerce</option>
-                        <option value="BBA">Bachelor of Buisness</option>
-                    </select>
-                </div>
+<div class="form-group">
+    <label for="department">Department:</label>
+    <select id="department" name="department" class="form-control">
+        <option value="computer_science">Computer Science</option>
+        <option value="commerce">Commerce</option>
+        <option value="humanities">Humanities</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="course">Courses:</label>
+    <select id="course" name="course" class="form-control">
+
+    </select>
+</div>
+
+<script>
+    const departmentSelect = document.getElementById('department');
+    const courseSelect = document.getElementById('course');
+
+    const coursesByDepartment = {
+        computer_science: ['BCA', 'BSc Computer Science', 'MSc Computer Science'],
+        commerce: ['BCom', 'MCom', 'MBA'],
+        humanities: ['BA', 'MA', 'PhD in Humanities']
+    };
+
+    departmentSelect.addEventListener('change', () => {
+        const selectedDepartment = departmentSelect.value;
+        const courses = coursesByDepartment[selectedDepartment];
+
+        // Clear previous options
+        courseSelect.innerHTML = '';
+
+        // Populate course options
+        for (const course of courses) {
+            const option = document.createElement('option');
+            option.value = course;
+            option.textContent = course;
+            courseSelect.appendChild(option);
+        }
+    });
+
+    // Initialize course options based on the default selected department
+    const initialSelectedDepartment = departmentSelect.value;
+    const initialCourses = coursesByDepartment[initialSelectedDepartment];
+    for (const course of initialCourses) {
+        const option = document.createElement('option');
+        option.value = course;
+        option.textContent = course;
+        courseSelect.appendChild(option);
+    }
+</script>
+
+
                 <div class="form-group">
                     <label for="purpose">Purpose:</label>
                     <select id="purpose" name="purpose" class="form-control">
@@ -137,17 +176,21 @@
             <div id="confirmation" style="display: none;">
                 <p><strong>Order Confirmed!</strong></p>
                 <p>Thank you for submitting the form.</p>
-                <p><a href="index.html">Return to Home Page</a></p>
+             <p><a href="{% url 'home' %}">Return to Home Page</a></p>
+
             </div>
         </div>
     </div>
-    <script>
-        document.getElementById('myForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            // Handle form submission, show confirmation message, etc.
-            document.getElementById('myForm').style.display = 'none';
-            document.getElementById('confirmation').style.display = 'block';
+ <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('myForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                document.getElementById('myForm').style.display = 'none';
+                document.getElementById('confirmation').style.display = 'block';
+            });
         });
     </script>
+
+
 </body>
 </html>

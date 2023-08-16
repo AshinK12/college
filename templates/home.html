@@ -33,13 +33,16 @@
             background-image: url("{% static 'style/image/hero.jpg' %}");
             background-size: cover;
             background-position: center;
-           color: #000000;
+            color: #ffffff;
             padding: 100px 0;
             text-align: center;
         }
-        .welcome-message {
-            margin-top: 30px;
-
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 18px;
         }
         .departments-dropdown {
             background-color: #343a40;
@@ -61,18 +64,13 @@
             padding: 20px 0;
             text-align: center;
         }
-        .h1{
-          background-color:orange;
-           color: #ffffff;
-
-        }
     </style>
 </head>
 <body>
     <nav>
         <div class="container">
             <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
                 <li class="nav-item dropdown">
@@ -89,27 +87,25 @@
     </nav>
 
     <div class="hero-section">
-
-        <h1>Welcome to Xyz College</h1><br>
-        <img src="{% static 'style/image/ab.jpg' %}" alt="College Campus">
-        {% if user.is_authenticated %}
-            <h2>Hello {{ user.username }}</h2>
-        {% else %}
-            <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to access this page.</p>
-        {% endif %}
+        <h1>Welcome to Xyz College</h1>
+        <p>Your Path to Success Begins Here</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Apply Now</a>
     </div>
+
     <div class="container about-college">
         <h2>About Xyz College</h2>
         <p>
-            <b>Equipment for your success</b><br>
+            <b>Equipment for Your Success</b><br>
             College of Commerce, Arts and Science, Patna (est. 1949) is a constituent unit of Patliputra University, Patna.
             Established in 1949, it is one of the oldest colleges in Patna, known for imparting quality undergraduate and postgraduate education.
         </p>
-        <img src="{% static 'style/image/ab.jpg' %}" alt="College Campus">
+        <img src="{% static 'style/image/college-campus.jpg' %}" alt="College Campus">
     </div>
+
     <div class="footer">
         <p>&copy; 2023 Xyz College. All rights reserved.</p>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
